@@ -3,6 +3,8 @@
 #include<ros/ros.h>
 #include<nav_msgs/Odometry.h>
 #include<geometry_msgs/Twist.h>
+#include<geometry_msgs/Quaternion.h>
+#include<tf/transform_datatypes.h>
 
 using namespace std;
 
@@ -14,15 +16,20 @@ namespace{
 
 void odomCallback(const nav_msgs::Odometry::ConstPtr &odom)
 {
+    geometry_msgs::Quaternion quat;
     poseX = odom->pose.pose.position.x;
     poseY = odom->pose.pose.position.y;
-    poseT = odom->pose.pose.orientation.w;
+
+    quat.x = odom->pose.pose.orientation.x;
+    quat.y = odom->pose.pose.orientation.y;
+    quat.z = odom->pose.pose.orientation.z;
+    quat.w = odom->pose.pose.orientation.w;
+
+    poseT = tf::getYaw(quat);
 
     cout<<"x = "<<poseX<<"[m]"<<"\t";
     cout<<"y = "<<poseY<<"[m]"<<"\t";
-    cout<<"theta = "<<((poseT*180/M_PI)/ 57.2949)*180<<"[deg]"<<endl;
-
-
+    cout<<"theta = "<<poseT*180/M_PI<<"[deg]"<<endl;
 }
 
 int main(int argc,char **argv)
@@ -37,11 +44,11 @@ int main(int argc,char **argv)
 
     while(ros::ok())
     {
-        if(poseT * 180/M_PI < 90.0)
+        if(poseT > 90 * 180/M_PI)
         {
             cmd_vel.linear.x = 0.0;
             cmd_vel.linear.y = 0.0;
-            cmd_vel.angular.z = 0.5;
+            cmd_vel.angular.z = 0.2;
         }
         else
         {
