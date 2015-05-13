@@ -1,0 +1,6 @@
+julius使用の際の注意
+rosのCMakeを利用する際ライブラリをうまく指定しないとjconfファイルを読み込めないので注意が必要
+ライブラリは
+-L/usr/local/lib -ljulius -ldl -lpthread
+-L/usr/local/lib -lsent -lpulse-simple -lpulse -lasound -lz -lm
+を二種類読み込む

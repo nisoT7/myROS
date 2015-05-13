@@ -1,0 +1,10 @@
+-outprobout filename		# save computed outprob vectors to HTK file (for debug)
+-w demo_challenge.dict
+-v model/lang_m/web.60k.htkdic
+-h model/phone_m/hmmdefs_ptm_gid.binhmm
+-hlist model/phone_m/logicalTri
+-n 5
+-output 1
+-input mic
+-zmeanframe
+-rejectshort 800
