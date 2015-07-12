@@ -7,7 +7,7 @@
 # @author	Kei Sugawara
 #
 # @par History
-# - 2012.03.27 KeiSugawara
+# - 2012.03.27 
 #	-# Initial Version
 #
 
