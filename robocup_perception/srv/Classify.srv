@@ -1,0 +1,6 @@
+string image_name
+bool flag
+
+---
+
+int8 result_num
