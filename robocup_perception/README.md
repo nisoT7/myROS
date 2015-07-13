@@ -1,7 +1,7 @@
 #robocup_perception
 自分用Robocuの物体認識のパッケージ
 
-#File Configuration
+#File composition
 src/pcl_object_detector.cpp : PCLベースの複数オブジェクト検出＋オブジェクトの重心検出（平面上で実行）
 
 src/image_object_detector.cpp : テンプレートマッチングベースの複数物体検出
