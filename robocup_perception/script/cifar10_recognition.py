@@ -16,26 +16,6 @@ import caffe
 from caffe.proto import caffe_pb2
 import numpy as np
 
-# mean_blob= caffe_pb2.BlobProto()
-# rospack = rospkg.RosPack()
-# dir_path = rospack.get_path("robocup_perception")
-# file_path = dir_path + '/recog_file'
-# recog_file_path = dir_path + '/object_image'
-# with open(file_path + '/mean.binaryproto') as f:
-#     mean_blob.ParseFromString(f.read())
-#     mean_array = np.array(
-#             mean_blob.data,
-#             dtype = np.float32
-#             ).reshape((
-#                 mean_blob.channels,
-#                 mean_blob.height,
-#                 mean_blob.width))
-#     recognition = caffe.Classifier(
-#         file_path + '/cifar10_quick.prototxt',
-#         file_path + '/cifar10_quick_iter_4000.caffemodel',
-#         mean = mean_array,
-#         raw_scale = 255)
-
 def classfier(req):
     mean_blob= caffe_pb2.BlobProto()
     rospack = rospkg.RosPack()
